@@ -2,6 +2,7 @@ package co.edu.test;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.HashMap;
 import java.util.Map;
 
 import javax.servlet.ServletException;
@@ -18,12 +19,16 @@ public class JdbcServlet extends HttpServlet{
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		EmpDAO dao = new EmpDAO();
-		Map<String,Object> result = dao.getEmpInfo(101);
+//		Map<String,Object> result = dao.getEmpInfo(Integer.parseInt("id"));
 			
 		//페이지 출력. 사번 이름 급여 부서
 		PrintWriter out = resp.getWriter();
 		
-
+		
+		int id = Integer.parseInt(req.getParameter("id"));
+		
+		Map<String,Object> result = new HashMap<>();
+		
 		//페이지 작성
 		//{키:값},{키:값},{키:값},{키:값} =>result.get("키")값을 반환
 		String html = "<html><head><title>Header 정보</title></head>";
