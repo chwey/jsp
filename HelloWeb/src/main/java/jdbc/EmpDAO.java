@@ -23,7 +23,6 @@ public class EmpDAO {
 	}
 	
 	public Map<String, Object> getEmpInfo(int empId){
-		
 		connect(); //conn객체.
 		String sql = "select * from employees where employee_id = ?";
 		Map<String, Object> result = new HashMap<>();
@@ -43,5 +42,28 @@ public class EmpDAO {
 			e.printStackTrace();
 		}
 		return result;
+	}
+	//단건등록
+	public int insertEmp(Map<String, Object>map) {
+		int r = 0;
+
+		try {
+			connect();
+			String sql = "insert into employees (employee_id, email, hire_date, job_id, last_name)"
+					+ " values(?, ?, ?, ?, ?)";
+			PreparedStatement psmt;
+			psmt = conn.prepareStatement(sql);
+			psmt.setString(1, (String) map.get("eid"));
+			psmt.setString(2, (String) map.get("email"));
+			psmt.setString(3, (String) map.get("hire"));
+			psmt.setString(4, (String) map.get("job"));
+			psmt.setString(5, (String) map.get("last"));
+			r = psmt.executeUpdate();
+		
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}
+		return r;
+
 	}
 }

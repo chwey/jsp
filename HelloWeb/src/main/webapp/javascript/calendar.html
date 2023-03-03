@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<div id="cal">
+		<table border=1>
+			
+		</table>
+	</div>
+	<script>
+		function makeCal(year,month){
+			//thead, tbody를 생성
+			let days = ['일', '월', '화', '수', '목', '금', '토']
+			let thead = document.createElement('thead'); //<thead></thead>
+			let tr = document.createElement('tr'); //<tr></tr>
+			thead.append(tr); //<thead><tr></tr></thead>
+			for (let i=0; i<days.length; i++){
+				let td= document.createElement('td');
+				td.innerText = days[i];
+				tr.append(td); //<thead><tr><td><td>...</td></td></tr></thead>
+			}
+			document.querySelector('table').append(thead); //table 하위에 thead
+			
+			let tbody = document.createElement('tbody');
+			
+			//tr*5...
+			tr = document.createElement("tr");
+			//1일의 위치 지정
+			for(let i=1; i<getFirstDay(2023,month); i++){
+				let td = document.createElement('td');
+				tr.append(td);
+			}
+			for(let i=1; i<=getLastDate(2023, month); i++){
+				let td = document.createElement("td");
+				td.innerText = i;
+				tr.append(td);
+				//7일 단위로 tr을 생성
+				if((getFirstDay(2023, month) +i -1)%7 == 0){
+					tbody.append(tr);
+					tr = document.createElement("tr");
+				}
+			}
+			tbody.append(tr);
+			document.querySelector('table').append(tbody); //table 하위에 thead
+			
+		}
+		
+		function getFirstDay(year, month){
+			//1일의 요일값.
+			if (month == 3){
+				return 4;
+			}else if (month == 4){
+				return 7;
+			}
+		}
+		
+		function getLastDate(year, month){
+			//마지막 날 값
+			if(month == 3){
+				return 31;
+			}else if (month == 4){
+				return 30;
+			}
+		}
+		makeCal(2023, 3); // 3월달: 
+	</script>
+</body>
+</html>
