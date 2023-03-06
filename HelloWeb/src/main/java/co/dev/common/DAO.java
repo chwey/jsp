@@ -31,7 +31,7 @@ public class DAO {
 				conn.close();
 			}
 			if(psmt != null) {
-				rs.close();
+				psmt.close();
 			}
 			if(rs != null) {
 				rs.close();

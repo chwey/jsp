@@ -1,8 +1,10 @@
-package co.dev.common;
+package co.dev.controller;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import co.dev.common.Control;
 
 public class MainControl implements Control {
 

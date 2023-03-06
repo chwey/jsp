@@ -70,6 +70,10 @@
   <servlet>
   	<servlet-name>front</servlet-name>
   	<servlet-class>co.dev.common.FrontController</servlet-class>
+  	<init-param>
+  		<param-name>encoding</param-name>
+  		<param-value>UTF-8</param-value>
+  	</init-param>
   </servlet>
   <servlet-mapping>
   	<servlet-name>front</servlet-name>
