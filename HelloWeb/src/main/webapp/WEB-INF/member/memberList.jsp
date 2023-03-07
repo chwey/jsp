@@ -14,8 +14,10 @@
 	<table class = "table">
 		<thead>
 		<tr>
-		<th> id </th>
-		<th> name</th>
+		<th> Id </th>
+		<th> Pw </th>
+		<th> Name </th>
+		<th> Mail </th>
 		</tr>
 		</thead>
 		<tbody>
@@ -26,8 +28,10 @@
 	%>
 		
 		<tr>
-			<td><%=member.getId() %></td>
+			<td><a href ='memberSearch.do?job=search&id=<%=member.getId() %>'><%=member.getId() %></a></td>
+			<td><%=member.getPasswd() %></td>
 			<td><%=member.getName() %></td>
+			<td><%=member.getMail() %></td>
 		</tr>
 		
 	<%

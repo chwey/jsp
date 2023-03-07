@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="co.dev.mapper.NoticeMapper">
+
+  <select id="noticeList" resultType="co.dev.vo.NoticeVO">
+    select * from notice order by notice_id desc
+  </select>
+  
+  <select id="noticeListWithPaging" resultType="co.dev.vo.NoticeVO" parameterType="int">
+    <![CDATA[
+    select notice_id, notice_writer, notice_title
+  	from(select rownum rn, notice_id, notice_writer, notice_title
+  	 from (select rownum rn, notice_id, notice_writer, notice_title from notice order by notice_id desc) a
+  	where rownum <=(#{page}*10)) b
+  	where b.rn>(#{page} - 1) * 10
+    ]]>
+    
+  </select>
+  
+  <insert id="insertNotice" parameterType="co.dev.vo.NoticeVO">
+  	insert into notice (notice_id, notice_writer, notice_title, notice_subject, attach) 
+  	values (notice_seq.nextval, #{noticeWriter}, #{noticeTitle}, #{noticeSubject}, #{attach})
+  </insert>
+  
+  <select id="selectNotice" resultType="co.dev.vo.NoticeVO" parameterType="int">
+    select * from notice where notice_id = #{nid}
+  </select>
+  
+  <update id="updateCount" parameterType="int">
+  update notice set hit_count = hit_count + 1
+  where notice_id = #{nid}
+  </update>
+  
+</mapper>
