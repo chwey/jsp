@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import co.dev.controller.LoginFormControl;
+import co.dev.controller.LogoutControl;
 import co.dev.controller.MainControl;
 import co.dev.controller.MemberDeleteControl;
 import co.dev.controller.MemberDeleteFormControl;
@@ -23,6 +25,8 @@ import co.dev.controller.MemberUpdateFormControl;
 import co.dev.controller.NoticeAddControl;
 import co.dev.controller.NoticeFormControl;
 import co.dev.controller.NoticeListControl;
+import co.dev.controller.NoticeModifyControl;
+import co.dev.controller.NoticeRemoveControl;
 import co.dev.controller.NoticeSearchControl;
 
 public class FrontController extends HttpServlet{
@@ -37,6 +41,8 @@ public class FrontController extends HttpServlet{
 		
 		map.put("/main.do", new MainControl());
 		map.put("/login.do", new LoginControl());
+		map.put("/loginForm.do", new LoginFormControl());
+		map.put("/logout.do", new LogoutControl());
 		//회원목록
 		map.put("/memberList.do", new MemberListControl());
 		//사원목록
@@ -63,6 +69,8 @@ public class FrontController extends HttpServlet{
 		map.put("/noticeWriteForm.do", new NoticeFormControl());//공지사항등록
 		map.put("/noticeAdd.do", new NoticeAddControl()); //공지사항등록
 		map.put("/noticeSearch.do", new NoticeSearchControl()); //공지사항상세조회 //getNotice(nid), selectNotice(nid)
+		map.put("/noticeModify.do", new NoticeModifyControl());//글수정
+		map.put("/noticeRemove.do", new NoticeRemoveControl());//글삭제
 	}
 	
 	@Override

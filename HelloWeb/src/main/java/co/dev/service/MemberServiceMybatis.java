@@ -41,4 +41,9 @@ public class MemberServiceMybatis implements MemberService{
 		return false;
 	}
 
+	@Override
+	public MemberVO login(MemberVO vo) {
+		return mapper.login(vo);
+	}
+
 }

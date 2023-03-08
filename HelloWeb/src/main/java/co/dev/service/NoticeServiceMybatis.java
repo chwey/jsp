@@ -24,7 +24,7 @@ public class NoticeServiceMybatis implements NoticeService{
 	@Override
 	public boolean addNotice(NoticeVO vo) { //등록
 		int r = mapper.insertNotice(vo);
-//		sqlSession.commit(); //다른세션에서 반영
+		//sqlSession.commit(); //다른세션에서 반영
 		return r == 1;
 	}
 
@@ -32,6 +32,22 @@ public class NoticeServiceMybatis implements NoticeService{
 	public NoticeVO getNotice(int nid) {
 		mapper.updateCount(nid); //조회수 증가
 		return mapper.selectNotice(nid);
+	}
+
+	@Override
+	public int getTotalCount() {
+		return mapper.getTotalCount();
+	}
+
+	@Override
+	public boolean noticeModify(NoticeVO vo) {
+		int r = mapper.updateNotice(vo);
+		return r == 1;
+	}
+
+	@Override
+	public boolean noticeRemove(int nid) {
+		return mapper.deleteNotice(nid) == 1;
 	}
 
 

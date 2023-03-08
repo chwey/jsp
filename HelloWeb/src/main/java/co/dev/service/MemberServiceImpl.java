@@ -33,5 +33,10 @@ public class MemberServiceImpl implements MemberService{
 	public boolean removeMember(String id) {
 		return dao.deleteMember(id) == 1;
 	}
+
+	@Override
+	public MemberVO login(MemberVO vo) {
+		return null;
+	}
 	
 }

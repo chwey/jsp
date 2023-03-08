@@ -10,9 +10,9 @@
   
   <select id="noticeListWithPaging" resultType="co.dev.vo.NoticeVO" parameterType="int">
     <![CDATA[
-    select notice_id, notice_writer, notice_title
-  	from(select rownum rn, notice_id, notice_writer, notice_title
-  	 from (select rownum rn, notice_id, notice_writer, notice_title from notice order by notice_id desc) a
+    select notice_id, notice_writer, notice_title, create_date
+  	from(select rownum rn, notice_id, notice_writer, notice_title, create_date
+  	 from (select rownum rn, notice_id, notice_writer, notice_title, create_date from notice order by notice_id desc) a
   	where rownum <=(#{page}*10)) b
   	where b.rn>(#{page} - 1) * 10
     ]]>
@@ -32,5 +32,17 @@
   update notice set hit_count = hit_count + 1
   where notice_id = #{nid}
   </update>
+  
+  <select id="getTotalCount" resultType="int">
+  	select count(*) from notice
+  </select>
+  
+  <update id="updateNotice" parameterType="co.dev.vo.NoticeVO">
+  update notice set notice_title = #{noticeTitle}, notice_subject = #{noticeSubject} where notice_id = #{noticeId}
+  </update>
+  
+  <delete id="deleteNotice" parameterType="int">
+  delete from notice where notice_id = #{nid}
+  </delete>
   
 </mapper>

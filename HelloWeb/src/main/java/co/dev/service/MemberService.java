@@ -15,4 +15,7 @@ public interface MemberService {
 	public boolean modifyMember(MemberVO vo);
 	//회원삭제처리
 	public boolean removeMember(String id);
+	// id/pw 로그인처리
+	public MemberVO login(MemberVO vo);
+	
 }

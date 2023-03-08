@@ -7,4 +7,9 @@
   <select id="getMembers" resultType="co.dev.vo.MemberVO">
     select * from members order by id desc
   </select>
+  
+  <select id="login" parameterType="co.dev.vo.MemberVO" resultType="co.dev.vo.MemberVO">
+  	select* from members where id=#{id} and passwd = #{passwd} 
+  </select>
+  
 </mapper>
