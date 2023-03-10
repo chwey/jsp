@@ -14,11 +14,11 @@
         <!-- Bootstrap icons-->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
         <!-- Core theme CSS (includes Bootstrap)-->
-        <link href="../css/styles.css" rel="stylesheet" />
+        <link href="./css/styles.css" rel="stylesheet" />
     </head>
     <body>
         <!-- Navigation-->
-        	<tiles:insertAttribute name = "top"></tiles:insertAttribute>
+        	<tiles:insertAttribute name="top"></tiles:insertAttribute>
         	
         <!-- Header-->
         	<tiles:insertAttribute name="header"></tiles:insertAttribute>
@@ -32,6 +32,6 @@
         <!-- Bootstrap core JS-->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
         <!-- Core theme JS-->
-        <script src="../js/scripts.js"></script>
+        <script src="./js/scripts.js"></script>
     </body>
 </html>
