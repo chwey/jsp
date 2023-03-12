@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>	
 <!DOCTYPE html>
 <html lang="en">
 
@@ -49,7 +52,7 @@
               			<tr>
               				<td>${book.bookCode }</td>
               				<td>${book.bookAuthor }</td>
-              				<td><a href="bookInfo.do?nid=${book.bookCode }">${book.bookTitle }</td>
+              				<td><a href="bookInfo.do?bookCode=${book.bookCode }">${book.bookTitle }</a></td>
               				<td>${book.bookPress }</td>
               				<td>${book.bookPrice }</td>
               			</tr>

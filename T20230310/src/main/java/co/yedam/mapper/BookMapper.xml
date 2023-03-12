@@ -5,16 +5,16 @@
 
 <mapper namespace="co.yedam.mapper.BookMapper">
 
-	<select id="bookList" resultType="BookVO">
+	<select id="bookList" resultType="co.yedam.vo.BookVO">
 		select * from book
 	</select>
 	
-	<insert id="insertBook" parameterType="BookVO">
+	<insert id="insertBook" parameterType="co.yedam.vo.BookVO">
 		insert into book  
 		values (#{bookCode},#{bookTitle},#{bookAuthor},#{bookPress}, #{bookDesc}, #{bookPrice})
 	</insert>
 	
-	<select id="selectBook" resultType="BookVO" parameterType="int">
+	<select id="selectBook" resultType="co.yedam.vo.BookVO" parameterType="String">
 		select * from book where book_code = #{bookCode}
 	</select>
 </mapper>

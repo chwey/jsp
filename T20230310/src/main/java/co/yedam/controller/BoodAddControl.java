@@ -37,14 +37,8 @@ public class BoodAddControl implements Command {
 	
 		if(service.addBook(vo)) {
 			resp.sendRedirect("bookList.do");
-		}else {
-			req.getRequestDispatcher("WEB-INF/book/bookAddForm.jsp").forward(req, resp);
 		}
-
 		
-
-		
-
 	}
 
 

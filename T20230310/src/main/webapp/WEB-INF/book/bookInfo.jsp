@@ -37,27 +37,27 @@
                     <tbody>
                         <tr>
                             <td>도서코드</td>
-                            <td><input type="text" name="book_code" value="${book.bookCode }"></td>
+                            <td><input type="text" name="bookCode" value="${book.bookCode }"></td>
                         </tr>
                         <tr>
                             <td>저자</td>
-                            <td><input type="text" name="book_code" value="${book.bookAuthor }"></td>
+                            <td><input type="text" name="bookAuthor" value="${book.bookAuthor }"></td>
                         </tr>
                         <tr>
                             <td>도서명</td>
-                            <td><input type="text" name="book_code" value="${book.bookTitle }"></td>
+                            <td><input type="text" name="bookTitle" value="${book.bookTitle }"></td>
                         </tr>
                         <tr>
                             <td>출판사</td>
-                            <td><input type="text" name="book_code" value="${book.bookPress }"></td>
+                            <td><input type="text" name="bookPress" value="${book.bookPress }"></td>
                         </tr>
                         <tr>
                             <td>도서평</td>
-                            <td><textarea cols="30" rows="5" name="subject">${book.bookDesc }</textarea></td>
+                            <td><textarea cols="30" rows="5" name="bookDesc">${book.bookDesc }</textarea></td>
                         </tr>
                         <tr>
                             <td>판매가</td>
-                            <td><input type="text" name="book_code" value="${book.bookPrice }"></td>
+                            <td><input type="text" name="bookPrice" value="${book.bookPrice }"></td>
                         </tr>
                         <tr>
                             <td align="center" colspan="2">
@@ -66,6 +66,7 @@
                         </tr>
                     </tbody>
                 </table>
+               
             </div>
         </div>
     </div>
