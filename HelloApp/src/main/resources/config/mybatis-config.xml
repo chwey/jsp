@@ -35,5 +35,6 @@
   
   <mappers>
     <mapper resource="co/prod/mapper/ProductMapper.xml"/>
+    <mapper resource="co/prod/mapper/MemberMapper.xml"/>
   </mappers>
 </configuration>

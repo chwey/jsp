@@ -12,7 +12,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import co.prod.controller.MemberAddAjax;
+import co.prod.controller.MemberListAjax;
 import co.prod.controller.MemberListControl;
+import co.prod.controller.MemberRemoveAjax;
 import co.prod.controller.MembersControl;
 import co.prod.controller.ProductInfoControl;
 import co.prod.controller.ProductListControl;
@@ -29,7 +32,10 @@ public class FrontController extends HttpServlet{
 		//url <-> control
 		map.put("/memberList.do", new MemberListControl());
 		map.put("/members.do", new MembersControl());
-		
+		//ajax 호출(SPA 처리)
+		map.put("/memberListAjax.do", new MemberListAjax());
+		map.put("/memberRemoveAjax.do", new MemberRemoveAjax());
+		map.put("/memberAddAjax.do", new MemberAddAjax());
 		//상품목록
 		map.put("/productList.do", new ProductListControl());
 		//상품한건정보
@@ -52,6 +58,10 @@ public class FrontController extends HttpServlet{
 //		}else if(viewPage.endsWith(".titles")) { //members.do(...tiles)
 			//viewPage = "/" + viewPage;
 			
+		}else if(viewPage.endsWith(".ajax")) {
+			resp.setContentType("text/json;charset=utf-8");
+			resp.getWriter().append(viewPage.substring(0,viewPage.length()-5));
+			return;
 		}
 		
 		//페이지 재지정
