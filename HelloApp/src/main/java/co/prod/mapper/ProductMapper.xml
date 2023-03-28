@@ -7,4 +7,24 @@
   <select id="productList" resultType="ProductVO">
     select * from product
   </select>
+  
+  <select id="selectProduct" parameterType="string">
+  	select * from product where product_code = #{code}
+  </select>
+  
+  <select id="replyList" parameterType="String" resultType="ReplyVO">
+  	select * from product_reply where product_code = #{code}
+  </select>
+  
+  <delete id ="deleteReply" parameterType="int">
+  	delete from product_reply where reply_no = #{replyId}
+  </delete>
+  
+  <insert id = "insertReply" parameterType="ReplyVO">
+  	<selectKey keyProperty="replyNo" resultType="int" order="BEFORE">
+  		select reply_seq.nextval from dual
+  	</selectKey>
+  	insert into product_reply (reply_no, reply_writer, reply_content, product_code)
+	values (#{replyNo}, #{replyWriter}, #{replyContent},#{productCode})
+  </insert>
 </mapper>

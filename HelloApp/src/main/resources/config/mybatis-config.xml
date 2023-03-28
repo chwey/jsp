@@ -18,6 +18,7 @@
 	
 	<typeAliases>
 		<typeAlias type="co.prod.vo.ProductVO" alias="ProductVO"/>
+		<typeAlias type="co.prod.vo.ReplyVO" alias="ReplyVO"/>
 	</typeAliases>
 	
 	

@@ -15,11 +15,12 @@ public class ProductInfoControl implements Control {
 
 	@Override
 	public String exec(HttpServletRequest req, HttpServletResponse resp) {
-		
-		List<ProductVO> list = new ArrayList<>();
+		String code = req.getParameter("code");
 		ProductService service = new ProductServiceImpl();
 		
-		req.setAttribute("pro", list);
+		
+		
+		req.setAttribute("code", service.getProduct(code));
 		
 		return "product/product.tiles";
 	}
