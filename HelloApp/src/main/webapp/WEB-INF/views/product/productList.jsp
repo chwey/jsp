@@ -22,7 +22,7 @@
 					<div class="card-body p-4">
 						<div class="text-center">
 							<!-- Product name-->
-							<h5 class="fw-bolder">${pro.get(i).productName }</h5>
+							<h5 class="fw-bolder"><a href="productInfo.do?code=${pro.get(i).productCode}">${pro.get(i).productName }</a></h5>
 							<!-- Product reviews-->
 							<div
 								class="d-flex justify-content-center small text-warning mb-2">	

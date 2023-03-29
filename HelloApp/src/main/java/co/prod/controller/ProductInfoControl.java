@@ -16,9 +16,7 @@ public class ProductInfoControl implements Control {
 	@Override
 	public String exec(HttpServletRequest req, HttpServletResponse resp) {
 		String code = req.getParameter("code");
-		ProductService service = new ProductServiceImpl();
-		
-		
+		ProductService service = new ProductServiceImpl();		
 		
 		req.setAttribute("code", service.getProduct(code));
 		

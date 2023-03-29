@@ -8,5 +8,6 @@
 </head>
 <body>
 	<h3>첫페이지</h3>
+	<jsp:forward page="productList.do"></jsp:forward>
 </body>
 </html>
