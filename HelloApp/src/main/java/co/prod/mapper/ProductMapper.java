@@ -29,5 +29,7 @@ public interface ProductMapper {
 	public List<CalendarVO> calendarList();
 	
 	public int insertEvent(CalendarVO vo);
+	
+	public int deleteEvent(CalendarVO vo);
 
 }

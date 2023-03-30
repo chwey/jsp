@@ -15,6 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 import co.prod.controller.CalendarAddAjax;
 import co.prod.controller.CalendarAjax;
 import co.prod.controller.CalendarForm;
+import co.prod.controller.CalendarRemoveAjax;
 import co.prod.controller.ChartAjax;
 import co.prod.controller.ChartControl;
 import co.prod.controller.CovidForm;
@@ -78,6 +79,8 @@ public class FrontController extends HttpServlet{
 		map.put("/calendarAjax.do", new CalendarAjax());
 		
 		map.put("/calendarAddAjax.do", new CalendarAddAjax());
+		
+		map.put("/calendarRemoveAjax.do", new CalendarRemoveAjax());
 		
 		
 		

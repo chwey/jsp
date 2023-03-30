@@ -75,4 +75,10 @@ public class ProductServiceImpl implements ProductService{
 		return mapper.insertEvent(vo) == 1;
 	}
 
+	@Override
+	public boolean removeEvent(CalendarVO vo) {
+		
+		return mapper.deleteEvent(vo) == 1;
+	}
+
 }

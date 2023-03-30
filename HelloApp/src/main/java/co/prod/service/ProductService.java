@@ -30,5 +30,8 @@ public interface ProductService {
 	public List<CalendarVO> calendarList();
 	//calendar insert
 	public boolean addEvent(CalendarVO vo);
+	// calendar 삭제
+	public boolean removeEvent(CalendarVO vo);
+	
 	
 }

@@ -61,8 +61,24 @@
           calendar.unselect()
         },
         eventClick: function (arg) {
+        	fetch('calendarRemoveAjax.do', {
+        		method: 'post',
+                headers: {
+                  'Content-Type': 'application/x-www-form-urlencoded'
+                },
+                body: 'title=' + arg.event.title + '&start=' + arg.event.startStr + '&end=' + arg.event.endStr
+        	})
+        	.then(resolve => resolve.json())
+        	.then(result => {
+        		if(result.retCode == 'Success'){
+        			alert('성공');
+            		arg.event.remove()
+        		}else if(result.retCode == 'Fail'){
+        			alert('실패');
+        		}
+        	})
+        	.catch(reject => console.error(reject));
           if (confirm('Are you sure you want to delete this event?')) {
-            arg.event.remove()
           }
         },
         editable: true,
