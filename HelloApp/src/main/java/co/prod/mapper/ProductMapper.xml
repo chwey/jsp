@@ -43,4 +43,13 @@
 	on e.department_id = d.department_id
 	group by department_name
   </select>
+  
+  <select id ="calendarList" resultType="CalendarVO">
+  	select title, start_date as "start", end_date as "end" from full_calendar
+  </select>
+  
+  <insert id ="insertEvent" parameterType="CalendarVO">
+  	insert into full_calendar values (#{title}, #{start}, #{end})
+  </insert>
+  
 </mapper>

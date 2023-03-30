@@ -3,6 +3,7 @@ package co.prod.service;
 import java.util.List;
 import java.util.Map;
 
+import co.prod.vo.CalendarVO;
 import co.prod.vo.ProductVO;
 import co.prod.vo.ReplyVO;
 
@@ -25,5 +26,9 @@ public interface ProductService {
 	
 	//chart
 	public List<Map<String,Object>> chartInfo();
+	//calendar
+	public List<CalendarVO> calendarList();
+	//calendar insert
+	public boolean addEvent(CalendarVO vo);
 	
 }

@@ -11,45 +11,34 @@
 	  
       
       
-      function drawChart() {
+      async function drawChart() {
 		//[{'Admin:1'},{'Accounting':2}.......]
-		fetch('chartAjax.do')
-      	.then(resolve => resolve.json())
-      	.then(result => {
-    	  //console.log(result);
-    	  let outAry = [];
-    	  outAry.push(['dept', 'cnt per dept']);
-    	  
-    	  result.forEach(dept => {
-    		  //console.log(dept)
-    		  let ary = []
-    		  for(prop in dept){
-    			  ary[0] = prop;
-    			  ary[1] = dept[prop];
-    		  }
-    		  //console.log(ary);
-    		  outAry.push(ary);//가공
-    	  })
-    		  var data = google.visualization.arrayToDataTable(outAry);		
-    	       /* var data = google.visualization.arrayToDataTable([
-    	          ['Task', 'Hours per Day'],
-    	          ['Work',     9],
-    	          ['Eat',      2],
-    	          ['Commute',  2],
-    	          ['Watch TV', 2],
-    	          ['Sleep',    7],
-    	          ['Game',    2]
-    	        ]);//배열형식으로 값을 넣어줌//배열 안에 객체임*/
-
-    	        var options = {
-    	          title: 'Person by Department'
-    	        };
+		console.log("1");
+		
+    	let outAry = [];
+    	outAry.push(['dept', 'cnt per dept']);
+		let promise1 = await fetch('chartAjax.do') //promise 객체
+      	let promise2 = promise1.json();//배열 결과값 [{},{},{},...]
+      	console.log("1-1");
+		promise2.forEach(dept => {
+			let ary = [];
+			for(let prop in dept){
+				ary[0] = prop;
+				ary[1] = dept[prop];				
+			}
+			outAry.push(ary);
+		})
+			console.log("1-2");
+    	 var data = google.visualization.arrayToDataTable(outAry);		
+    	 
+    	 var options = {
+    	      title: 'Person by Department'
+    	    };
     	  console.log(outAry);
           var chart = new google.visualization.PieChart(document.getElementById('piechart'));
           chart.draw(data, options); //차트를 그려줌
-      })
-      .catch(reject => console.error(reject))
 		
+		console.log("2");
 
 
       }
