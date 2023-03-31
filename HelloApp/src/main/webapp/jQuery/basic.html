@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jquery/basic.html</title>
+    <!-- <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script> -->
+    <!-- <script src = "./jquery-3.6.4.min.js"></script> -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+
+    <script>
+        //this: 객체 안에서 사용되어지면 객체자신을 가르킴/ 함수에서 사용되면 전역객체(윈도우)/ 이벤트에서 사용되면 이벤트를 받는 대상
+        //$() => jquery 객체: 메소드기반(함수) 
+        //자바스크립트: 객체(Document Object Model): document.children, document.querySelector()
+        //$()달러싸인에 이벤트를 넣음
+        console.log(document);
+        console.log($(document)); //jquery로 바꾼 document
+        $(document).ready(function(){
+
+        });
+
+        function callWindow(){//함수에서 사용되면 전역객체(윈도우)
+            console.log(this); //window객체
+        }
+        callWindow();
+
+        let obj = {//객체 안에서 사용되어지면 객체자신을 가르킴
+            name:"홍길동",
+            age:20,
+            showAge:function(){
+                console.log("이름은:" + this.name + ",나이는" + this.age);
+            }
+        }
+        obj.showAge();
+
+        $(document).ready(function() {
+            console.log(this);//window -> document
+            console.log(document.querySelector('p:nth-of-type(2)'));
+            console.log($("p:eq(0)")); //jquery 객체의 모습
+
+            $("p").on("click", function() {
+                //이벤트에서 사용되면 이벤트를 받는 대상
+               $(this).css("color", "red"); //style {'font': bold, 'color': 'red','back':'black'}
+
+            });
+
+            //자바스크립트로 하면.. 
+            // document.querySelectorAll('p').forEach(function(pTag){
+            //     pTag.addEventListener('click', function(){
+            //         pTag.style.color = 'red';
+            //     })
+            // });
+
+        });
+
+    </script>
+</head>
+<body>
+    <p>가애짱~~~~!</p>
+    <p>가애짱2</p>
+</body>
+</html>
