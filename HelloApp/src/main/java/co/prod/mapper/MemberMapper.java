@@ -2,6 +2,7 @@ package co.prod.mapper;
 
 import java.util.List;
 
+import co.prod.vo.EmpVO;
 import co.prod.vo.MemberVO;
 import co.prod.vo.MembersVO;
 
@@ -22,5 +23,8 @@ public interface MemberMapper {
 	//list
 	public List<MembersVO>memberList();
 	public int insertMembers(MembersVO vo);
-	public int deleteMembers(String memberId);
+	public int deleteMembersAry(String[] members);
+	
+	public List<EmpVO> selectEmployees();
+	public int insertDataTable(EmpVO vo);
 }

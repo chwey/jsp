@@ -27,7 +27,7 @@
                         console.log(idx, member);
                         $('#list').append(
                             //tr>td*4 생성
-                            $('<tr id = '+member.memberId +'/>').append($('<td />').text(member.memberId),
+                            $('<tr id = '+member.memberId +' />').append($('<td />').text(member.memberId),
                                 $('<td />').append(member.memberName),
                                 $('<td />').text(member.memberAddr),
                                 $('<td />').text(member.memberTel),
@@ -105,14 +105,13 @@
             //여기에 선택삭제 클릭이벤트 넣기&이벤트핸들러
             $('#delSelected').on('click', function (e) {
                 e.preventDefault();
-                let memberIdAray = {}
+                let memberIdAry = '';//memberId=user01&memberId=user02&memberId=user03
                 console.log($('#list input:checked'));
                 $('#list input:checked').each(function (idx, item) {
                 	console.log($(item).parent().parent().attr('id'))
                 	//memberIdAray.push({'memberId': $(item).parent().parent().attr('id'))
-                	memberIdAry.memberId = $(item).parent().parent().attr('id');
-                	//$(item).closest('tr').remove();
-                    
+                	memberIdAry += '&memberId=' + $(item).parent().parent().attr('id');
+                	//$(item).closest('tr').remove();          
                 })
                 console.log(memberIdAry);
                 
@@ -120,9 +119,12 @@
                 $.ajax({
                 	url: 'memberRemoveJquery.do',//호출할 컨트롤
                 	method:'POST',
-                	data: {memberId:'user01', memberId:'user02'},//memberId=user0&memberId=user02
+                	data: memberIdAry.substring(1),//&memberId=user0&memberId=user02
                 	success: function(result){
-                		
+                		if(result.retCode == 'Success')              	
+                		$('#list input:checked').closest('tr').remove();
+                		else
+                			alert('error!!');
                 	},
                 	error: function(reject){
                 		console.log(reject)
